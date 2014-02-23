@@ -1,7 +1,6 @@
 pkg_apt = {
-    "debconf-utils": {
-        "installed": True,
-    },
+    "debconf-utils": {},
+    "unzip": {},
 }
 
 actions = {
