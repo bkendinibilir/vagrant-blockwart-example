@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.provision :blockwart do |bw|
       bw.node_name = 'devel'
       bw.node_host = 'devel.vm'
+      bw.interactive = false
     end
   end
 
