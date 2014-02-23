@@ -8,6 +8,5 @@ actions = {
     'update_apt': {
         'command': "apt-get update",
         'expected_return_code': 0,
-        'timing': "pre",
     },
 }
