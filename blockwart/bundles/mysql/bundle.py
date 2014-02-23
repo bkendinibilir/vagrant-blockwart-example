@@ -8,6 +8,25 @@ pkg_apt = {
     },
 }
 
+actions = {
+	"restart_mysql": {
+		'command': "service mysql restart",
+		'timing': 'triggered',
+	}, 
+}
+
+files = {
+	"/etc/mysql/conf.d/mysqld_bind.cnf": {
+		"mode": "0644",
+        "owner": "root",
+        "group": "root",
+        "source": "mysqld_bind.cnf",
+        "triggers": [
+        	"restart_mysql",
+        ]
+	},
+}
+
 debconf_selections = {
 	"mysql-server/root_password": {
 		"pkg_name": "mysql-server-5.5",
@@ -16,5 +35,5 @@ debconf_selections = {
 	"mysql-server/root_password_again": {
 		"pkg_name": "mysql-server-5.5",
 		"value": "password root",
-	}
+	},
 }
