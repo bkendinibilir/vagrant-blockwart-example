@@ -8,6 +8,10 @@ pkg_apt = {
     },
 }
 
+svc_upstart = {
+    "mysql": {},
+}
+
 actions = {
 	"restart_mysql": {
 		'command': "service mysql restart",
@@ -21,6 +25,9 @@ files = {
         "owner": "root",
         "group": "root",
         "source": "mysqld_bind.cnf",
+        "depends": [
+        	'pkg_apt:mysql-server-5.5',
+        ],
         "triggers": [
         	"restart_mysql",
         ]
