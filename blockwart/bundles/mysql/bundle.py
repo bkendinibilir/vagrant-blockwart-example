@@ -1,10 +1,10 @@
 pkg_apt = {
     "mysql-server-5.5": {
         "installed": True,
-        'depends': [
-            'debconf_selection:mysql-server/root_password',
-            'debconf_selection:mysql-server/root_password_again',
-        ],
+        #'depends': [
+        #    'debconf_selection:mysql-server/root_password',
+        #    'debconf_selection:mysql-server/root_password_again',
+        #],
     },
 }
 
