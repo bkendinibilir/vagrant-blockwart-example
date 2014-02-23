@@ -34,10 +34,6 @@ actions = {
 	},
 	"activate_apc.php": {
 		"command": "gunzip /usr/share/doc/php-apc/apc.php.gz -c > /var/www/default/apc.php",
-		"depends": [
-			"pkg_apt:php-apc",
-			"dir:/var/www/default",
-		],
 		"timing": "triggered",
 	}
 }
