@@ -1,7 +1,10 @@
 groups = {
     'shopware': {
         'bundles': (
-            'debian', 'mysql', 'shopware', 
+            'debian', 
+            'devel-vm', 
+            'mysql', 
+            'shopware', 
         ),
         'members': (
             'devel',
