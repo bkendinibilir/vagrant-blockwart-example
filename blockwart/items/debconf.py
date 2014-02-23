@@ -26,8 +26,7 @@ class DebConfSelection(Item):
     Interface to debconf
     """
     BUNDLE_ATTRIBUTE_NAME = "debconf_selections"
-    DEPENDS_STATIC = []
-    # "pkg_apt:debconf-utils" 
+    DEPENDS_STATIC = ['pkg_apt:debconf-utils']
     ITEM_ATTRIBUTES = {
         'pkg_name': None,
         'value': "",
