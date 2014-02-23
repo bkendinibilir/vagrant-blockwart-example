@@ -8,13 +8,13 @@ Vagrant.require_plugin "vagrant-hostsupdater"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
-  config.vm.define 'node1' do |node|
+  config.vm.define 'devel' do |node|
     node.vm.network :private_network, ip: '192.168.33.10'
-    node.vm.hostname = 'node1'
-    node.hostsupdater.aliases = %w(shopware.vm db.vm)
+    node.vm.hostname = 'devel'
+    node.hostsupdater.aliases = %w(devel.vm shopware.devel.vm)
     node.vm.provision :blockwart do |bw|
-      bw.node_name = 'node1'
-      bw.node_host = 'node1.vm'
+      bw.node_name = 'devel'
+      bw.node_host = 'devel.vm'
     end
   end
 

@@ -4,7 +4,7 @@ groups = {
             'debian', 'mysql', 'shopware', 
         ),
         'members': (
-            'node1',
+            'devel',
         ),
         'subgroups': (
         ),
