@@ -4,9 +4,9 @@ groups = {
             'apt',
         ),
     },
-    'formmed-devel': {
+    'shopware': {
         'bundles': (
-            'shopware', 'mysql'
+            'apt', 'shopware', 'mysql'
         ),
         'members': (
             'node1',
