@@ -1,18 +1,12 @@
 groups = {
-    'debian': {
-        'bundles': (
-            'apt',
-        ),
-    },
     'shopware': {
         'bundles': (
-            'apt', 'shopware', 'mysql'
+            'debian', 'mysql', 'shopware', 
         ),
         'members': (
             'node1',
         ),
         'subgroups': (
-            'debian',
         ),
     },
     'all': {
