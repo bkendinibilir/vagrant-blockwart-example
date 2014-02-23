@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+	ServerName shopware.${node.hostname}
+    DocumentRoot /var/www/shopware.${node.hostname}/htdocs
+
+    <Directory /var/www/shopware.${node.hostname}/htdocs>
+        Options FollowSymLinks
+        AllowOverride All
+        Order allow,deny
+    	allow from all
+    </Directory>
+
+    ErrorLog /var/www/shopware.${node.hostname}/logs/error.log
+    CustomLog /var/www/shopware.${node.hostname}/logs/access.log combined
+</VirtualHost>
