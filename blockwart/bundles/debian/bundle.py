@@ -18,3 +18,10 @@ svc_upstart = {
         "running": False,
     },
 }
+
+files = {
+    "/etc/hosts": {
+        "source": "hosts",
+        "mode": "0644",
+    }
+}
