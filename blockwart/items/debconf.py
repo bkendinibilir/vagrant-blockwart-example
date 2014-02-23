@@ -1,3 +1,5 @@
+from time import sleep
+
 from blockwart.items import Item, ItemStatus
 from blockwart.utils import LOG
 from blockwart.utils.text import bold
@@ -11,7 +13,7 @@ def debconf_selection(node, pkg_name, key):
             key,
             r"{ print $3,$4,$5,$6,$7,$8,$9,$10 }"
         ),
-        may_fail=True,
+        may_fail=False,
     )
     if result.return_code != 0 or not result.stdout:
         return False
@@ -62,11 +64,13 @@ class DebConfSelection(Item):
             self.name,  
             self.attributes['value'],
         ))
-        
+        sleep(1)
+
     def get_status(self):
         value = debconf_selection(self.node, self.attributes['pkg_name'], self.name)
         value_exists = (value)
         item_status = (value == self.attributes['value'])
+
         return ItemStatus(
             correct=item_status,
             info={
