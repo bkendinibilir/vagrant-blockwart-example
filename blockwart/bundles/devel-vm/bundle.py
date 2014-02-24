@@ -32,8 +32,4 @@ actions = {
 		"command": "apache2ctl graceful",
 		"timing": "triggered",
 	},
-	"activate_apc.php": {
-		"command": "gunzip /usr/share/doc/php-apc/apc.php.gz -c > /var/www/default/apc.php",
-		"timing": "triggered",
-	}
 }
