@@ -40,6 +40,11 @@ actions = {
 	"activate_apc.php": {
 		"command": "gunzip /usr/share/doc/php-apc/apc.php.gz -c > /var/www/default/apc.php",
 		"timing": "triggered",
+	},
+	"install_shopware": {
+		"command": "/vagrant/data/shopware-install.sh",
+		"timing": "post",
+		"unless": "test -d /var/www/shopware.devel.vm/htdocs/engine",
 	}
 }
 
