@@ -6,6 +6,7 @@ pkg_apt = {
 actions = {
     'update_apt': {
         'command': "apt-get update",
+        'unless': "stat /var/lib/apt/lists | grep Modify | grep \"$(date +%Y-%m-%d)\"",
     },
 }
 
