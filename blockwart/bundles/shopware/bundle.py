@@ -1,19 +1,8 @@
 pkg_apt = {
-    "apache2-mpm-worker": {
-    	"installed": True,
-        "triggers": [
-        	"remove_index_html",
-        	"remove_000-default",
-        ],
-    },
+    "apache2-mpm-worker": {},
     "libapache2-mod-fastcgi": {},
     "php5": {},
-    "php-apc": {
-    	"installed": True,
-    	"triggers": [
-    		"activate_apc.php",
-    	],
-    },
+    "php-apc": {}, 
     "php5-curl": {},
     "php5-gd": {},
     "php5-fpm" : {},
@@ -21,14 +10,6 @@ pkg_apt = {
 }
 
 actions = {
-	"remove_index_html": {
-		"command": "rm -f /var/www/index.html",
-		'timing': "triggered",
-	},
-	"remove_000-default": {
-		"command": "rm -f /etc/apache2/sites-enabled/000-default",
-		'timing': "triggered",
-	},
 	"apache2_graceful": {
 		"command": "apache2ctl graceful",
 		"timing": "triggered",
@@ -37,9 +18,20 @@ actions = {
 		"command": "/etc/init.d/php5-fpm restart",
 		"timing": "triggered",
 	},
+	"remove_index_html": {
+		"command": "rm -f /var/www/index.html",
+		"timing": "post",
+		'unless': "test ! -f /var/www/index.html",
+	},
+	"remove_000-default": {
+		"command": "rm -f /etc/apache2/sites-enabled/000-default",
+		"timing": "post",
+		'unless': "test ! -f /etc/apache2/sites-enabled/000-default",
+	},
 	"activate_apc.php": {
 		"command": "gunzip /usr/share/doc/php-apc/apc.php.gz -c > /var/www/default/apc.php",
-		"timing": "triggered",
+		"timing": "post",
+		"unless": "test -f /var/www/default/apc.php",
 	},
 	"install_shopware": {
 		"command": "/vagrant/data/shopware-install.sh",
@@ -95,7 +87,7 @@ symlinks = {
 	"/etc/apache2/sites-enabled/shopware.{}".format(node.hostname): {
 		"target": "/etc/apache2/sites-available/shopware.{}".format(node.hostname),
 		"depends": [
-			"file:/etc/apache2/sites-available/shopware.{}".format(node.hostname),
+			"pkg_apt:apache2-mpm-worker",
 		],
 	},
 }
