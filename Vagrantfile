@@ -8,6 +8,7 @@ Vagrant.require_plugin "vagrant-hostsupdater"
 
 VM_NAME = 'devel'
 VM_HOST = 'devel.vm'
+VM_ALIASES = [VM_HOST, "shopware.#{VM_HOST}"]
 VM_IP = '192.168.33.10'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -15,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define VM_NAME do |node|
     node.vm.network :private_network, ip: VM_IP
     node.vm.hostname = VM_NAME
-    node.hostsupdater.aliases = %w(VM_HOST shopware.VM_HOST)
+    node.hostsupdater.aliases = VM_ALIASES
     node.vm.provision :blockwart do |bw|
       bw.node_name = VM_NAME
       bw.node_host = VM_HOST
