@@ -13,6 +13,7 @@ VM_IP = '192.168.33.10'
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
   config.vm.define VM_NAME do |node|
     node.vm.network :private_network, ip: VM_IP
     node.vm.hostname = VM_NAME
